@@ -48,19 +48,52 @@
     .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px; opacity: .85; }
     .nav-links a.active { color: var(--white); opacity: 1; position: relative; }
     .nav-links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--primary); border-radius: 2px; }
-    .nav-cta { display: none; }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
     .menu-btn { display: none; background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px 10px; }
     .mobile-menu { display: none; }
 
+    /* Theme toggle */
+    .theme-btn { background: rgba(255,255,255,.02); color: var(--text); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px 10px; cursor: pointer; font-weight: 700; }
+    .theme-btn:hover { filter: brightness(1.1); }
+
     @media (max-width: 840px) {
       .nav-links { display: none; }
-      .nav-cta { display: block; }
+      .nav-cta { display: flex; }
       .menu-btn { display: grid; place-items: center; }
       .mobile-menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(10,15,29,.95); border-bottom: 1px solid rgba(255,255,255,.06); }
       .mobile-menu.open { display: block; }
       .mobile-menu a { display: block; padding: 14px 20px; border-top: 1px solid rgba(255,255,255,.06); color: var(--text); text-decoration: none; }
       .mobile-menu a:active { background: rgba(255,255,255,.04); }
     }
+
+    /* Light mode overrides */
+    body.light {
+      --primary: #2563eb;
+      --primary-600: #1d4ed8;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --card: #ffffff;
+      --muted: #475569;
+      --text: #0f172a;
+      --white: #000000;
+      --border: #e5e7eb;
+      background: linear-gradient(180deg, #f7faff 0%, #ffffff 100%);
+      color: var(--text);
+    }
+    .light .navbar { background: rgba(255,255,255,.7); border-bottom: 1px solid rgba(0,0,0,.06); }
+    .light .mobile-menu { background: rgba(255,255,255,.97); border-bottom: 1px solid rgba(0,0,0,.06); }
+    .light .mobile-menu a { color: var(--text); }
+    .light .btn { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); color: var(--text); }
+    .light .theme-btn { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); color: var(--text); }
+    .light .skill,
+    .light .tcard,
+    .light .project-card,
+    .light .socials a { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); }
+    .light input[type="text"],
+    .light input[type="email"],
+    .light textarea { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); color: var(--text); }
+    .light .link { color: #111827; }
+    .light footer { border-top: 1px solid rgba(0,0,0,.08); color: #64748b; }
 
     /* Sections */
     section { padding: 84px 0; }
@@ -147,13 +180,14 @@
         <a href="#home">Home</a>
         <a href="#about">Tentang</a>
         <a href="#skills">Keahlian</a>
-        <a href="#projects">Proyek</a>
+        <a href="#projects">Project</a>
         <a href="#experience">Pengalaman</a>
         <a href="#education">Pendidikan</a>
         <a href="#organizations">Organisasi</a>
         <a href="#contact">Kontak</a>
       </div>
       <div class="nav-cta">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme" title="Tema">🌙</button>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
       </div>
     </div>
@@ -161,7 +195,7 @@
       <a href="#home">Home</a>
       <a href="#about">Tentang</a>
       <a href="#skills">Keahlian</a>
-      <a href="#projects">Proyek</a>
+      <a href="#projects">Project</a>
       <a href="#experience">Pengalaman</a>
       <a href="#education">Pendidikan</a>
       <a href="#organizations">Organisasi</a>
@@ -327,6 +361,13 @@
         <div class="timeline-item">
           <div class="dot"></div>
           <div class="tcard">
+            <h4>Agam Inong Bireuen — Anggota</h4>
+            <small>2024</small>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="tcard">
             <h4>Ikatan Mahasiswa Kota Juang Bireuen (IMKJ Bireuen) — Wakil Ketua</h4>
             <small>08/2023 – 08/2024</small>
           </div>
@@ -408,6 +449,25 @@
   <script>
     // Tahun otomatis
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme: load & toggle
+    const THEME_KEY = 'preferred-theme';
+    const themeBtn = document.getElementById('themeBtn');
+    const applyTheme = (mode) => {
+      document.body.classList.toggle('light', mode === 'light');
+      if (themeBtn) themeBtn.textContent = mode === 'light' ? '☀️' : '🌙';
+    };
+    const stored = localStorage.getItem(THEME_KEY);
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    const initial = stored || (prefersLight ? 'light' : 'dark');
+    applyTheme(initial);
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const next = document.body.classList.contains('light') ? 'dark' : 'light';
+        applyTheme(next);
+        localStorage.setItem(THEME_KEY, next);
+      });
+    }
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
