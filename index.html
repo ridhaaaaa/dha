@@ -88,7 +88,8 @@
     .light .skill,
     .light .tcard,
     .light .project-card,
-    .light .socials a { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); }
+    .light .socials a,
+    .light .tool-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); }
     .light input[type="text"],
     .light input[type="email"],
     .light textarea { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.02); color: var(--text); }
@@ -120,6 +121,38 @@
     .about p { color: var(--muted); }
     @media (max-width: 900px) { .about { grid-template-columns: 1fr; } .avatar { max-width: 220px; } }
 
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+
+.socials {
+  display: flex;
+  flex-direction: row;  /* Biar horizontal */
+  justify-content: center; /* Rata tengah */
+  gap: 15px; /* Jarak antar item */
+  margin-top: 20px;
+}
+
+.socials a {
+  padding: 10px 18px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.socials a:hover {
+   background: #00aced;
+  transform: translateY(-3px);
+}
+
+
+
     /* Skills */
     .skills { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
     @media (max-width: 980px) { .skills { grid-template-columns: repeat(4, 1fr); } }
@@ -148,6 +181,26 @@
     .tcard { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 12px 14px; }
     .tcard h4 { margin: 0 0 4px 0; }
     .tcard small { color: var(--muted); }
+
+    /* Tools */
+    .tools-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+    @media (max-width: 1200px) { .tools-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px) { .tools-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+    .tool-icon { 
+      width: 48px; 
+      height: 48px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      border-radius: 12px; 
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); 
+      border: 1px solid rgba(255,255,255,.08); 
+      transition: transform .2s ease, filter .2s ease; 
+      cursor: pointer; 
+    }
+    .tool-icon:hover { transform: translateY(-2px); filter: brightness(1.1); }
+    .tool-icon svg { width: 24px; height: 24px; }
 
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
@@ -205,35 +258,87 @@
 
   <!-- Hero -->
   <section id="home" class="hero">
-    <div class="container hero-wrap">
-      <div>
-        <h1>Ridha</h1>
-        <p>Social Media Management, Web Developer & UI/UX Designer • Bireuen, Aceh, Indonesia</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="images/Resume.pdf" target="_blank">CV</a>
-          <a class="btn" href="#projects">Lihat Proyek</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-blob" aria-hidden="true"></div>
+  <div class="container hero-wrap">
+    <div>
+      <h1>Ridha</h1>
+      <p>Social Media Management, Web Developer & UI/UX Designer • Bireuen, Aceh, Indonesia</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="images/Resume.pdf" target="_blank">CV</a>
+        <a class="btn" href="#projects">Lihat Proyek</a>
       </div>
     </div>
-  </section>
+    <div class="hero-card">
 
-  <!-- Tentang -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-sub">Sedikit pengenalan singkat</p>
-      <div class="about">
-        <div class="avatar" role="img" aria-label="Foto Profil"></div>
-        <div>
-          <p>Lulusan Teknik Informatika Universitas Malikussaleh dengan keahlian Web Development, UI/UX Design, dan Social Media Management. Terampil menggunakan Figma, HTML, CSS, PHP, dan MySQL, serta berpengalaman dalam kerja tim, kepemimpinan, dan manajemen proyek.</p>
-          <p>Berdomisili di Bireuen, Aceh, Indonesia. Terbuka untuk kolaborasi dan peluang kerja.</p>
+      <!-- Ganti blob jadi foto -->
+      <img src="images/foto.jpg" alt="Foto Ridha" style="
+        width: 220px;
+        height: 220px;
+        border-radius: 24px;
+        object-fit: cover;
+        border: 1px solid rgba(255,255,255,.08);
+        box-shadow: inset 0 0 40px rgba(37,99,235,.25), 0 20px 50px rgba(0,0,0,.35);
+      ">
+    </div>
+  </div>
+</section>
+
+  <!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-sub">Sedikit pengenalan singkat</p>
+
+    <div class="about-grid">
+      <!-- Kiri -->
+      <div>
+        <p>
+          Lulusan Teknik Informatika Universitas Malikussaleh dengan keahlian Web Development,
+          UI/UX Design, dan Social Media Management. Terampil menggunakan Figma, HTML, CSS, PHP, dan MySQL,
+          serta berpengalaman dalam kerja tim, kepemimpinan, dan manajemen proyek.
+        </p>
+        <p>
+          Berdomisili di Bireuen, Aceh, Indonesia. Terbuka untuk kolaborasi dan peluang kerja.
+        </p>
+      </div>
+
+      <!-- Kanan -->
+      <div>
+        <p style="margin-bottom: 1rem; font-weight: 500;">
+          Temukan saya di media sosial berikut untuk berdiskusi, berbagi ide, atau sekadar berkenalan.
+        </p>
+       <div class="socials">
+          <a href="mailto:ridharidwan10@gmail.com"><span class="left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
+              <path d="m22 8-10 6L2 8"/>
+            </svg>
+            <span>Email</span></span><span>→</span></a>
+          <a href="https://github.com/ridhaaaaa" target="_blank" rel="noopener"><span class="left">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.12-1.5-1.12-1.5-.92-.64.07-.63.07-.63 1.02.07 1.55 1.07 1.55 1.07.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05.8-.23 1.65-.35 2.5-.36.85 0 1.7.12 2.5.36 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.69.95.69 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+            <span>GitHub</span></span><span>↗</span></a>
+          <a href="https://www.linkedin.com/in/ridha-ridha-03604b25b/" target="_blank" rel="noopener"><span class="left">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M20.447 20.452H17.21v-5.568c0-1.328-.027-3.04-1.852-3.04-1.853 0-2.136 1.447-2.136 2.944v5.664H10V9h3.112v1.561h.043c.435-.824 1.498-1.693 3.083-1.693 3.297 0 3.907 2.17 3.907 4.992v6.592zM6.34 7.433a1.814 1.814 0 1 1 0-3.628 1.814 1.814 0 0 1 0 3.628zM7.998 20.452H4.68V9h3.318v11.452zM22.225 0H1.771C.792 0 0 .77 0 1.723v20.554C0 23.23.792 24 1.771 24h20.451C23.2 24 24 23.23 24 22.277V1.723C24 .77 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>LinkedIn</span></span><span>↗</span></a>
+          <a href="https://www.instagram.com/cybridha/" target="_blank" rel="noopener"><span class="left">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.75-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6.5Z"/>
+            </svg>
+            <span>Instagram</span></span><span>↗</span></a>
+          <a href="tel:082271296078" target="_blank" rel="noopener"><span class="left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>Telepon</span></span><span>↗</span></a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Keahlian -->
   <section id="skills">
@@ -241,15 +346,12 @@
       <h2 class="section-title">Keahlian</h2>
       <p class="section-sub">Teknologi yang sering saya gunakan</p>
       <div class="skills">
-        <div class="skill"><i></i> HTML</div>
-        <div class="skill"><i></i> CSS</div>
+
+        <div class="skill"><i></i> Laravel</div>
         <div class="skill"><i></i> PHP</div>
         <div class="skill"><i></i> MySQL</div>
-        <div class="skill"><i></i> XAMPP</div>
         <div class="skill"><i></i> UI/UX</div>
         <div class="skill"><i></i> Figma</div>
-        <div class="skill"><i></i> Komunikasi</div>
-        <div class="skill"><i></i> Presentasi</div>
         <div class="skill"><i></i> Public Speaking</div>
         <div class="skill"><i></i> Social Media Management</div>
       </div>
@@ -259,8 +361,8 @@
   <!-- Proyek -->
   <section id="projects">
     <div class="container">
-      <h2 class="section-title">Project</h2>
-      <p class="section-sub">Beberapa karya yang pernah saya buat</p>
+      <h2 class="section-title">Portofolio</h2>
+      <p class="section-sub">Beberapa karya yang terbaru</p>
       <div class="projects">
         <article class="project-card">
           <div class="project-cover" style="background-image:url('images/hive.png');"></div>
@@ -369,36 +471,6 @@
     </div>
   </section>
 
-  <!-- Organisasi -->
-  <section id="organizations">
-    <div class="container">
-      <h2 class="section-title">Organisasi</h2>
-      <p class="section-sub">Keterlibatan dan kepemimpinan organisasi</p>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Agam Inong Bireuen — Anggota</h4>
-            <small>2024</small>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Ikatan Mahasiswa Kota Juang Bireuen (IMKJ Bireuen) — Wakil Ketua</h4>
-            <small>08/2023 – 08/2024</small>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Himpunan Mahasiswa Teknik Informatika (HIMATIF) Universitas Malikussaleh — Wakil Ketua Bidang Keagamaan</h4>
-            <small>03/2023 – 02/2024</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Kontak -->
   <section id="contact">
@@ -421,37 +493,10 @@
           </div>
           <p id="formStatus" style="margin:0; color: var(--muted);"></p>
         </form>
-        <div class="socials">
-          <a href="mailto:ridharidwan10@gmail.com"><span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
-              <path d="m22 8-10 6L2 8"/>
-            </svg>
-            <span>Email</span></span><span>→</span></a>
-          <a href="https://github.com/ridhaaaaa" target="_blank" rel="noopener"><span class="left">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.12-1.5-1.12-1.5-.92-.64.07-.63.07-.63 1.02.07 1.55 1.07 1.55 1.07.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05.8-.23 1.65-.35 2.5-.36.85 0 1.7.12 2.5.36 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.69.95.69 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
-            </svg>
-            <span>GitHub</span></span><span>↗</span></a>
-          <a href="https://www.linkedin.com/in/ridha-ridha-03604b25b/" target="_blank" rel="noopener"><span class="left">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M20.447 20.452H17.21v-5.568c0-1.328-.027-3.04-1.852-3.04-1.853 0-2.136 1.447-2.136 2.944v5.664H10V9h3.112v1.561h.043c.435-.824 1.498-1.693 3.083-1.693 3.297 0 3.907 2.17 3.907 4.992v6.592zM6.34 7.433a1.814 1.814 0 1 1 0-3.628 1.814 1.814 0 0 1 0 3.628zM7.998 20.452H4.68V9h3.318v11.452zM22.225 0H1.771C.792 0 0 .77 0 1.723v20.554C0 23.23.792 24 1.771 24h20.451C23.2 24 24 23.23 24 22.277V1.723C24 .77 23.2 0 22.222 0h.003z"/>
-            </svg>
-            <span>LinkedIn</span></span><span>↗</span></a>
-          <a href="https://www.instagram.com/cybridha/" target="_blank" rel="noopener"><span class="left">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.75-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6.5Z"/>
-            </svg>
-            <span>Instagram</span></span><span>↗</span></a>
-          <a href="tel:082271296078" target="_blank" rel="noopener"><span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <span>Telepon</span></span><span>↗</span></a>
-        </div>
       </div>
     </div>
   </section>
+
 
   <!-- Footer -->
   <footer>
