@@ -151,6 +151,22 @@
   transform: translateY(-3px);
 }
 
+.socials.socials-horizontal {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 18px !important;
+  margin-top: 18px;
+}
+@media (max-width: 600px) {
+  .socials.socials-horizontal {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+}
+
 
 
     /* Skills */
@@ -219,6 +235,69 @@
     footer { padding: 22px 0 34px; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); margin-top: 40px; }
     .foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .foot a { color: var(--text); text-decoration: none; opacity: .9; }
+    .project-tabs {
+  background: linear-gradient(90deg, rgba(37,99,235,0.10) 0%, rgba(16,24,39,0.10) 100%);
+  border-radius: 14px;
+  padding: 8px 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  margin-bottom: 24px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 10px 26px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  opacity: 1;
+}
+.tab-btn span {
+  display: inline-block;
+}
+.socials.socials-icons {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-top: 18px;
+}
+.socials.socials-icons a {
+  padding: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #555;
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  transition: background 0.2s, border-color 0.2s, transform 0.18s;
+  font-size: 0;
+}
+.socials.socials-icons a:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-3px) scale(1.08);
+}
+.socials.socials-icons svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -262,9 +341,9 @@
     <div>
       <h1>Ridha</h1>
       <!-- <p>Social Media Management, Web Developer & UI/UX Designer • Bireuen, Aceh, Indonesia</p> -->
-      <p>IT Support, Web Developer • Bireuen, Aceh, Indonesia</p>
+      <p>Web Developer, Data Center Engineer</p>
       <div class="cta">
-        <a class="btn btn-primary" href="images/Resume.pdf" target="_blank">CV</a>
+        <a class="btn btn-primary" href="CV Ridha.pdf" target="_blank">CV</a>
         <a class="btn" href="#projects">Lihat Proyek</a>
       </div>
     </div>
@@ -298,13 +377,9 @@
           serta berpengalaman dalam kerja tim, kepemimpinan, dan manajemen proyek.
         </p> -->
         <p>
-          “Lulusan Teknik Informatika Universitas Malikussaleh dengan keahlian di bidang teknologi informasi, 
-          sistem jaringan, serta dukungan teknis (IT Support). Terampil dalam instalasi dan konfigurasi 
-          perangkat keras maupun perangkat lunak. Memiliki pengalaman dalam pengembangan web, serta kemampuan 
-          kerja tim.
-        </p>
-        <p>
-          Berdomisili di Bireuen, Aceh, Indonesia. Terbuka untuk kolaborasi dan peluang kerja.
+          Sarjana Teknik Informatika dengan minat pada sistem Linux, SQL, dan manajemen sistem berbasis web.
+          Berpengalaman dalam mengembangkan aplikasi web, mengelola basis data MySQL, dan menggunakan lingkungan Linux.
+          Mahir dalam sistem berbasis IoT, pemrosesan data, dan pemecahan masalah teknis, dengan pengalaman dalam proyek teknologi kolaboratif.
         </p>
       </div>
 
@@ -313,33 +388,33 @@
         <p style="margin-bottom: 1rem; font-weight: 500;">
           Temukan saya di media sosial berikut untuk berdiskusi, berbagi ide, atau sekadar berkenalan.
         </p>
-       <div class="socials">
-          <a href="mailto:ridharidwan10@gmail.com"><span class="left">
+        <div class="socials socials-icons socials-horizontal">
+          <a href="mailto:ridharidwan10@gmail.com" title="Email" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
               <path d="m22 8-10 6L2 8"/>
             </svg>
-            <span>Email</span></span><span>→</span></a>
-          <a href="https://github.com/ridhaaaaa" target="_blank" rel="noopener"><span class="left">
+          </a>
+          <a href="https://github.com/ridhaaaaa" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.12-1.5-1.12-1.5-.92-.64.07-.63.07-.63 1.02.07 1.55 1.07 1.55 1.07.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05.8-.23 1.65-.35 2.5-.36.85 0 1.7.12 2.5.36 1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.69.95.69 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
             </svg>
-            <span>GitHub</span></span><span>↗</span></a>
-          <a href="https://www.linkedin.com/in/ridha-ridha-03604b25b/" target="_blank" rel="noopener"><span class="left">
+          </a>
+          <a href="https://www.linkedin.com/in/ridha-ridha-03604b25b/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M20.447 20.452H17.21v-5.568c0-1.328-.027-3.04-1.852-3.04-1.853 0-2.136 1.447-2.136 2.944v5.664H10V9h3.112v1.561h.043c.435-.824 1.498-1.693 3.083-1.693 3.297 0 3.907 2.17 3.907 4.992v6.592zM6.34 7.433a1.814 1.814 0 1 1 0-3.628 1.814 1.814 0 0 1 0 3.628zM7.998 20.452H4.68V9h3.318v11.452zM22.225 0H1.771C.792 0 0 .77 0 1.723v20.554C0 23.23.792 24 1.771 24h20.451C23.2 24 24 23.23 24 22.277V1.723C24 .77 23.2 0 22.222 0h.003z"/>
             </svg>
-            <span>LinkedIn</span></span><span>↗</span></a>
-          <a href="https://www.instagram.com/cybridha/" target="_blank" rel="noopener"><span class="left">
+          </a>
+          <a href="https://www.instagram.com/cybridha/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.75-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6.5Z"/>
             </svg>
-            <span>Instagram</span></span><span>↗</span></a>
-          <a href="tel:082271296078" target="_blank" rel="noopener"><span class="left">
+          </a>
+          <a href="tel:082271296078" target="_blank" rel="noopener" title="Telepon" aria-label="Telepon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <span>Telepon</span></span><span>↗</span></a>
+          </a>
         </div>
       </div>
     </div>
@@ -351,18 +426,18 @@
   <section id="skills">
     <div class="container">
       <h2 class="section-title">Keahlian</h2>
-      <p class="section-sub">Teknologi yang sering saya gunakan</p>
+      <p class="section-sub">Keahlian dan teknologi yang saya kuasai</p>
       <div class="skills">
 
-         <div class="skill"><i></i> Troubleshooting hardware/software</div>
-        <div class="skill"><i></i> network maintenance</div>
+        <div class="skill"><i></i> Python</div>
         <div class="skill"><i></i> Laravel</div>
         <div class="skill"><i></i> PHP</div>
         <div class="skill"><i></i> MySQL</div>
         <!-- <div class="skill"><i></i> UI/UX</div>
         <div class="skill"><i></i> Figma</div> -->
-        <div class="skill"><i></i> Public Speaking</div>
-        <div class="skill"><i></i> Social Media Management</div>
+        <div class="skill"><i></i> Linux</div>
+        <div class="skill"><i></i> Grafana</div>
+        <div class="skill"><i></i> virtual machine (VM)</div>
       </div>
     </div>
   </section>
@@ -372,32 +447,79 @@
     <div class="container">
       <h2 class="section-title">Portofolio</h2>
       <p class="section-sub">Beberapa karya yang terbaru</p>
+      <!-- Tabs for categories -->
+      <div class="project-tabs" style="display:flex;gap:10px;margin-bottom:24px;justify-content:center;">
+  <!--button class="tab-btn active" data-category="web">🖥️ <span>Web Developer</span></!--button>
+  <button class="tab-btn" data-category="design">🎨 <span>Desain</span></button>
+  <button class="tab-btn" data-category="video">🎬 <span>Video Editor</span></button>
+</div>
+
       <div class="projects">
-        <article class="project-card">
+        <!-- Web Developer Projects -->
+        <article class="project-card" data-category="web">
           <div class="project-cover" style="background-image:url('images/hive.png');"></div>
           <div class="project-body">
             <h3 class="project-title">Hive Organizer — Event Organizer Aceh</h3>
             <p class="project-desc">Website showcase & manajemen event. Menampilkan portofolio acara dan dashboard untuk pengelolaan.</p>
-            <div class="project-links">
-            </div>
+            <div class="project-links"></div>
           </div>
         </article>
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <div class="project-cover" style="background-image:url('images/melon.png');"></div>
           <div class="project-body">
             <h3 class="project-title">IoT Monitoring Hidroponik Melon</h3>
             <p class="project-desc">Sistem web (PHP & JavaScript) untuk memantau suhu, TDS, pH, dan ketinggian air secara realtime.</p>
-            <div class="project-links">
-            </div>
+            <div class="project-links"></div>
           </div>
         </article>
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <div class="project-cover" style="background-image:url('images/blc.png');"></div>
           <div class="project-body">
             <h3 class="project-title">Website Baburrahmah Learning Center</h3>
             <p class="project-desc">Website pembelajaran online dengan sistem manajemen kursus, materi, dan evaluasi untuk lembaga pendidikan.</p>
-            <div class="project-links">
-            </div>
+            <div class="project-links"></div>
+          </div>
+        </article>
+         <article class="project-card" data-category="web">
+          <div class="project-cover" style="background-image:url('images/duwis.png');"></div>
+          <div class="project-body">
+            <h3 class="project-title">Website Komplek Makam Samudra Pasai</h3>
+            <p class="project-desc">Website pembelajaran online dengan sistem manajemen kursus, materi, dan evaluasi untuk lembaga pendidikan.</p>
+            <div class="project-links"></div>
+          </div>
+        </article>
+        <!-- Desain Projects (contoh, ganti sesuai portofolio) -->
+        <article class="project-card" data-category="design" style="display:none;">
+          <div class="project-cover" style="background-image:url('images/hive.png');"></div>
+          <div class="project-body">
+            <h3 class="project-title">Poster Event Hive</h3>
+            <p class="project-desc">Desain poster promosi event Hive Organizer.</p>
+            <div class="project-links"></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="design" style="display:none;">
+          <div class="project-cover" style="background-image:url('images/blc.png');"></div>
+          <div class="project-body">
+            <h3 class="project-title">Logo Baburrahmah Learning Center</h3>
+            <p class="project-desc">Desain logo untuk lembaga pendidikan.</p>
+            <div class="project-links"></div>
+          </div>
+        </article>
+        <!-- Video Editor Projects (contoh, ganti sesuai portofolio) -->
+        <article class="project-card" data-category="video" style="display:none;">
+          <div class="project-cover" style="background-image:url('images/melon.png');"></div>
+          <div class="project-body">
+            <h3 class="project-title">Video Dokumentasi Hidroponik</h3>
+            <p class="project-desc">Editing video dokumentasi proses monitoring hidroponik melon.</p>
+            <div class="project-links"></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="video" style="display:none;">
+          <div class="project-cover" style="background-image:url('images/hive.png');"></div>
+          <div class="project-body">
+            <h3 class="project-title">Aftermovie Event Hive</h3>
+            <p class="project-desc">Editing aftermovie untuk event Hive Organizer.</p>
+            <div class="project-links"></div>
           </div>
         </article>
       </div>
@@ -406,57 +528,63 @@
 
   <!-- Pengalaman -->
   <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Pengalaman</h2>
-      <p class="section-sub">Ringkasan perjalanan profesional</p>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Web Developer & IT Support — Hive Organizer</h4>
-            <small>09/2024 — Sekarang · Lhokseumawe, Aceh</small>
-            <p>Mengembangkan dan memelihara website (HTML, CSS, PHP, MySQL) serta dukungan IT 
-              perangkat keras dan software.</p>
-              <p>Berperan sebagai operator IT dalam dua event besar PT Medco E&P Malaka:
-                 “Medco Synergy Day 2025”, memastikan sistem audio-visual, berjalan lancar 
-                 selama kegiatan berlangsung.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Social Media Admin (Freelance & Volunteer) — Hive Organizer, Agam Inong Bireuen, Bireuen Legion</h4>
-            <small>2024 — Sekarang · Bireuen, Aceh</small>
-            <p>Mengelola konten media sosial, strategi branding, dan engagement untuk berbagai organisasi dan komunitas lokal.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Brand Talent / Content Talent — Telent Coffee 88</h4>
-            <small>2024 — Sekarang · Bireuen, Aceh</small>
-            <p>Menciptakan konten kreatif dan strategi branding untuk meningkatkan visibilitas dan engagement brand.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Programmer — CV. Superteam Academy</h4>
-            <small>05/2024 – 10/2024 · Lhokseumawe, Aceh</small>
-            <p>Mengajar dasar pembuatan website (HTML, CSS, PHP) dan membimbing instalasi tools (XAMPP, editor, database).</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="tcard">
-            <h4>Intern – Event Organizer — UPT. BKK Universitas Malikussaleh</h4>
-            <small>02/2024 – 08/2024 · Lhokseumawe, Aceh</small>
-            <p>Membantu perencanaan dan pelaksanaan acara kampus; pengalaman koordinasi lintas divisi.</p>
-          </div>
+  <div class="container">
+    <h2 class="section-title">Pengalaman</h2>
+    <p class="section-sub">Ringkasan perjalanan profesional saya</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <div class="tcard">
+          <h4>Website Administrator / Database Support — PT. LARIS</h4>
+          <small>2025 — Sekarang · Aceh</small>
+          <p>Mengelola website perusahaan, melakukan pembaruan data berbasis sistem web, serta mendukung pengelolaan database untuk kebutuhan operasional.</p>
         </div>
       </div>
+
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <div class="tcard">
+          <h4>Web Developer — Zafa Creative</h4>
+          <small>2025 — Sekarang · Bireuen, Aceh</small>
+          <p>Mengembangkan website client dan mengelola database berbasis SQL untuk berbagai kebutuhan digital dan branding bisnis.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <div class="tcard">
+          <h4>Web Developer & IT Support — Hive Organizer</h4>
+          <small>2024 — 2025 · Lhokseumawe, Aceh</small>
+          <p>Mengembangkan dan memelihara aplikasi web berbasis PHP, JavaScript, dan MySQL. Menangani troubleshooting sistem, dukungan teknis, serta pengelolaan perangkat IT.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <div class="tcard">
+          <h4>Programmer / Instructor — CV. Superteam Academy</h4>
+          <small>2024 · Lhokseumawe, Aceh</small>
+          <p>Mengajar dasar pembuatan website menggunakan HTML, CSS, PHP, serta membimbing penggunaan database SQL dan instalasi tools pengembangan.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="dot"></div>
+        <div class="tcard">
+          <h4>Web Develope</h4>
+          <small>Freelance Project Based</small>
+          <p>Mengerjakan pembuatan website custom untuk UMKM, personal branding, company profile, 
+            dan kebutuhan bisnis lokal. Meliputi desain tampilan, pengembangan sistem, database,
+            serta maintenance website.</p>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Pendidikan -->
   <section id="education">
@@ -602,6 +730,20 @@
       statusEl.style.color = '#86efac';
       form.reset();
     });
+
+    // Project tabs logic
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const cat = this.getAttribute('data-category');
+        projectCards.forEach(card => {
+          card.style.display = card.getAttribute('data-category') === cat ? '' : 'none';
+        });
+      });
+    });
   </script>
 </body>
 <!--
@@ -610,5 +752,6 @@ Catatan:
 - Gambar sampul menggunakan Unsplash (bebas lisensi). Ganti sesuai kebutuhan.
 -->
 </html>
+`
 
 
